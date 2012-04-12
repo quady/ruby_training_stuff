@@ -58,4 +58,17 @@ describe Address do
       @a.errors[:state].should_not be_empty
     end
   end
+  
+  describe "Scopes" do
+    before do
+      @u1 = FactoryGirl.create(:user)
+      @a1 = FactoryGirl.create(:address, :user_id => @u1.id)
+      @a2 = FactoryGirl.create(:address, :user_id => @u1.id)
+      @a3 = FactoryGirl.create(:address, :user_id => @u1.id, :state => "WA")
+    end
+    it "should return all addresses for a given state" do
+      Address
+    end
+
+  end
 end
